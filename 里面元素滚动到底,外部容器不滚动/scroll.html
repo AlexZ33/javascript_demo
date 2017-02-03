@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>里面元素滚动到底,外部容器不滚动</title>
+	<title>镜心的小树屋（jxdxsw.com）</title>
+	<script src="http://libs.baidu.com/jquery/1.9.0/jquery.min.js"></script>
+<style type="text/css">
+#test{
+	width: 800px;
+	height:400px;
+	overflow: auto;
+}
+
+	
+</style>
+<script>
+	$.fn.scrollUnique = function() {
+	return $(this).each(function() {
+		var eventType = 'mousewheel';
+		if (document.mozHidden !== undefined) {
+			eventType = 'DOMMouseScroll';
+		}
+		$(this).on(eventType, function(event) {
+			// 一些数据
+			var scrollTop = this.scrollTop,
+				scrollHeight = this.scrollHeight,
+				height = this.clientHeight;
+
+			var delta = (event.originalEvent.wheelDelta) ? event.originalEvent.wheelDelta : -(event.originalEvent.detail || 0);		
+
+			if ((delta > 0 && scrollTop <= delta) || (delta < 0 && scrollHeight - height - scrollTop <= -1 * delta)) {
+				// IE浏览器下滚动会跨越边界直接影响父级滚动，因此，临界时候手动边界滚动定位
+				this.scrollTop = delta > 0? 0: scrollHeight;
+				// 向上滚 || 向下滚
+				event.preventDefault();
+			}		
+		});
+	});	
+};
+
+$('#test').scrollUnique();
+</script>
+</head>
+<body>
+<div id="effect" class="part">
+	<div class="show">
+		<div class="demo">
+			<div id="test" class="test">
+				<img src="pic/jx.jpg" >
+				<img src="pic/jx2.jpg" alt="">
+			</div>
+			<p>如果页面没有滚动条，改变窗口高度……例如，F12打开控制台</p>
+		</div>
+	</div>
+</div>	
+</body>
+</html>
