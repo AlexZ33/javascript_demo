@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标悬浮效果</title>
+	<link rel="stylesheet" type="text/css" href="css/hover.css">
+</head> 
+<!-- <body onmousedown="show_coords(event)">
+ -->	
+<body>
+
+ <div id="main">
+		<img id="mapBg" src="img/map.png" usemap="#map"></img>
+		<map name="map" id="map">
+		<area href="" alt="" target="" shape="circ" media="" type="">
+ 		</map>
+		
+		<div class="hotSpot" id="xwhHotSpot">
+			<a href="#" class="hotSpotBtn">
+				<span class="dot" style="display: block;"></span>
+				<div class="detailImg"  id="xwh" style="display:none;position: relative;">
+					<img src="img/xwh.jpg" style="position: absolute;top: -120px;left:-180px" alt=""></img>
+				</div>
+			</a>
+		</div>
+		
+		<div class="hotSpot" id="njzHotSpot">
+			<a href="#" class="hotSpotBtn">
+				<span class="dot" style="display: block;"></span>
+				<div class="detailImg" id="njz" style="display:none;position: relative;">
+					<img src="img/njz.jpg" alt="" "></img>
+				</div>
+			</a>
+		</div>
+	</div>
+
+
+	<!-- <script>
+	function show_coords(event){
+		x=event.clientX;
+		y=event.clientY;
+		console.log("X坐标:"+x+",Y坐标"+y);
+	}
+	</script> -->
+
+
+ <script src="js/hover.js"></script>
+
+	
+</body>
+</html>
