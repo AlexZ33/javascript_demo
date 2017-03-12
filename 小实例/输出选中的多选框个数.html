@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输出选中的多选框个数</title>
+</head>
+<body>
+	<input type="checkbox" value="1" name="check" checked="checked">
+	<input type="checkbox" value="2" name="check">
+	<input type="checkbox" value="3" name="check" checked="checked">
+	<input type="button" value="你选中的个数" id="btn">
+
+
+	<script>
+		var btn=document.getElementById("btn");
+		btn.onclick=function(){
+			var arrays=new Array();
+			var items =document.getElementsByName("check");
+
+			for (var i = 0; i < items.length; i++) {
+				if(items[i].checked)
+					{arrays.push(items[i].value);}
+			}
+		
+
+		alert("选中个数为："+arrays.length);
+	}
+	</script>
+</body>
+</html>
+
+
+<!-- 思路：
+新建一个空数组
+获取所有name为“check”的多选框
+循环判断多选框是否被选中，如果被选中则添加到数组里
+获取输出按钮，然后为按钮添加onclick事件，输出数组的长度即可
+ -->

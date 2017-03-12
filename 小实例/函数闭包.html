@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>函数闭包</title>
+</head>
+<body>
+
+<div>
+	<ul>
+		<li>click me</li>
+		<li>click me</li>
+		<li>click me</li>
+		<li>click me</li>
+	</ul>
+</div>
+	
+	<script>
+
+  var elements=document.getElementsByTagName('li');  
+  var length=elements.length;   
+  for(var i=0;i<length;i++){      
+ 	  elements[i].onclick=function(){   
+ 		     alert(i);   
+ 	 } };
+
+
+
+// window.onload  = function() {    var elements=document.getElementsByTagName('li');    var length=elements.length;    for(var i=0;i<length;i++){        elements[i].onclick=function(num){        return function() {                alert(num);        };    }(i);    }}
+ 	//闭包允许内层函数引用父函数的变量，但该变量是最终值。
+ 	//js没有块级作用域，所以 变量i是全局变量。  在点击事件发生之前，匿名函数没有被调用，所以for循环会执行完，(i=3,i++,i=4)
+点击事件发生，for循环执行，调用匿名函数 ，弹出窗口. i=4
+	</script>
+</body>
+</html>
