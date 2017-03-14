@@ -1,7 +1,7 @@
 //匿名自执行函数来封装
 //基本思路就是利用setTimeInterval控制opacity的变换
 
-;(function(window,undefined){
+;(function(window,u){
 	function Hotspot(){
 		this.init();
 	}
@@ -16,28 +16,28 @@
 
 		},
 		//给热点绑定事件
-		onHotspotHover:function(){
+		 onHotspotHover:function(){
 			var hotSpots =this.$$('hotSpot'),//得到页面上所有拥有hotSpot样式的元素
-				len =hotSports.length,
+				len =hotSpots.length,
 				i,
 				that=this,
 				currDetailImg;
 				for ( i = 0; i < len; i++) {
-					currDetailImg= that.$$('detailImg',hotSports[i])[0];
-					currDetailImg.timer= null;
-					currDetailImg.alpha=0;
-					hotSports[i].onmouseover=function(e){
+					currDetailImg= that.$$('detailImg',hotSpots[i])[0];
+					// currDetailImg.timer;
+					// currDetailImg.alpha=0;
+					hotSpots[i].onmouseover=function(e){
 						that.doTransform(that.$$('detailImg',this[0]),100);
 						that.$$('dot',this)[0].style.display='none';//闪烁红点在mouseover时候隐藏
 
 					}
-					hotSports[i].onmouseout=function(e){
+					hotSpots[i].onmouseout=function(e){
 						that.doTransform(that.$$('detailImg',this[0]),0);
 						that.$$('dot',this)[0].style.display='block';
 					}
 				}
 
-		}
+		},
 
 		//doTransform()动画方法
 		//实现元素透明度缓冲效果的变化
@@ -50,7 +50,7 @@
 			   times=-5;
 			}
 
-			me.style.display="block";
+			// me.style.display="block";
 			clearInterval(me.timer);
 			me.timer=setInterval(function(){
 				if (me.alpha==alpha) {
@@ -62,7 +62,7 @@
 					me.alpha+=times;
 					me.style.opacity=me.alpha/100;
 					me.style.filter='alpha(opacity:'+me.alpha+')';//兼容老ie浏览器
-				}				}
+				}
 			},30);
 
 		},
